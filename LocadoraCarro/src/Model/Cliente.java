@@ -48,6 +48,7 @@ public class Cliente extends Usuario{
         this.clienteOuro = clienteOuro;
     }
     
+    @Override
     public String toString(){
         return  "Categoria CNH: " +categoriaCNH+
                 "Numero da CNH: " +numeroCNH+

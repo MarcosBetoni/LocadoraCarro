@@ -1,4 +1,4 @@
-package locacaoVeiculo;
+package Model;
         
 public class Veiculo  {
     protected int codigoVeiculo;
@@ -121,17 +121,14 @@ public class Veiculo  {
         return "Cod. Veiculo: " +codigoVeiculo+
                 "\nModelo: " +nomeModelo+
                 "\nMontadora: " +montadora+
-                "\nAno de Fabricação: " +anoFabricacao+
+                "\nAno de Fabricaï¿½ï¿½o: " +anoFabricacao+
                 "\nAno de Modelo: " +anoModelo+
                 "\nPlaca: " +placa+
                 "\nCategoria: " +categoria+
                 "\nValor da Tabela Fipe: " +valorFipe+
-                "\nValor do Aluguel Diário: " +valorDiaria+
-                "\nCategoria de CNH necessária: " +categoriaCNHNecessaria+
-                "\nSituação: " +alugado;
-                
-        
-                
+                "\nValor do Aluguel Diï¿½rio: " +valorDiaria+
+                "\nCategoria de CNH necessï¿½ria: " +categoriaCNHNecessaria+
+                "\nSituaÃ§Ã£o: " +alugado;           
     }
 }   
 
