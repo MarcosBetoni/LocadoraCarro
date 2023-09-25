@@ -1,6 +1,6 @@
 package Model;
         
-public class Veiculo  {
+public abstract class Veiculo  {
     protected int codigoVeiculo;
     protected String nomeModelo;
     protected String montadora;

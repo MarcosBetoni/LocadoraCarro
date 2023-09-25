@@ -2,28 +2,30 @@ package Model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
-        
+import java.time.Period;
+
 public class Locacao {
     private int codigoLocacao;
+    private Veiculo veiculo;
     private Cliente codigoCliente;
     private Funcionario codigoFuncionario;
     private LocalDate dataLocacao;
     private LocalDate dataDevolucao;
-    private float valorTotal;
+    private float valorFinal;
     private Pagamento formaPagamento;
-    private static ArrayList<Seguro> segurosContratados = new ArrayList();
+    private ArrayList<Seguro> segurosContratados;
     private boolean finalizada;
 
-    public Locacao(int codigoLocacao, Cliente codigoCliente, Funcionario codigoFuncionario, LocalDate dataLocacao, LocalDate dataDevolucao, float valorTotal, Pagamento formaPagamento, boolean finalizada) {
+    public Locacao(int codigoLocacao, Cliente codigoCliente, Funcionario codigoFuncionario, LocalDate dataLocacao, LocalDate dataDevolucao, float valorFinal, Pagamento formaPagamento, boolean finalizada) {
         this.codigoLocacao = codigoLocacao;
         this.codigoCliente = codigoCliente;
         this.codigoFuncionario = codigoFuncionario;
         this.dataLocacao = dataLocacao;
         this.dataDevolucao = dataDevolucao;
-        this.valorTotal = valorTotal;
+        this.valorFinal = valorFinal;
         this.formaPagamento = formaPagamento;
         this.finalizada = finalizada;
+        this.segurosContratados = new ArrayList<>();
     }
 
     public int getCodigoLocacao() {
@@ -66,12 +68,12 @@ public class Locacao {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public float getValorTotal() {
-        return valorTotal;
+    public float getValorFinal() {
+        return valorFinal;
     }
 
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal(float valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
     public Pagamento getFormaPagamento() {
@@ -82,14 +84,14 @@ public class Locacao {
         this.formaPagamento = formaPagamento;
     }
 
-    public static ArrayList<Seguro> getSegurosContratados() {
+    public  ArrayList<Seguro> getSegurosContratados() {
         return segurosContratados;
     }
 
-    public static void setSegurosContratados(ArrayList<Seguro> segurosContratados) {
-        Locacao.segurosContratados = segurosContratados;
+    public void setSegurosContratados(ArrayList<Seguro> segurosContratados) {
+        this.segurosContratados = segurosContratados;
     }
-
+    
     public boolean isFinalizada() {
         return finalizada;
     }
@@ -98,16 +100,22 @@ public class Locacao {
         this.finalizada = finalizada;
     }
     
-    /*public float calcularValorTotal() {
-        Iterator<ItemVenda> iterator = itensVenda.iterator();
-        float valor=0;
-        while (iterator.hasNext()) {
-            if(cliente.getOuro() == true){
-               valor = valor + iterator.next().calcularTotalOuro();
-            } else {
-               valor = valor + iterator.next().calcularTotal();
-            }
-        } return valor;
-    }*/
     
+    public float calcularValorTotal() {
+        long periodoAluguel;
+        periodoAluguel = Math.abs(this.dataDevolucao.toEpochDay() - this.dataLocacao.toEpochDay());
+        float valorSeguros = 0;
+        for (Seguro seguro : this.segurosContratados){
+            valorSeguros = valorSeguros + seguro.getValor();
+        }
+        
+       this.valorFinal = periodoAluguel * this.veiculo.getValorDiaria() + valorSeguros;
+       return valorFinal;
+        
+    }
+    
+    /*public boolean possuiSeguro(){
+        
+        
+    }*/
 }
