@@ -114,8 +114,15 @@ public class Locacao {
         
     }
     
-    /*public boolean possuiSeguro(){
+    public String possuiSeguro(){
+        if(getSegurosContratados() == null){
+           String possuiSeguro = "Não possui seguro.";
+                     return possuiSeguro ;
+        }else{
+            String possuiSeguro = "Possui seguro.";
+                    return possuiSeguro;
+        }
         
         
-    }*/
+    }
 }
