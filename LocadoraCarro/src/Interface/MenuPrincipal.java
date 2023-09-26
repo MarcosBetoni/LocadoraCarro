@@ -33,6 +33,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal Locadora");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/Logo.png"))); // NOI18N
 
